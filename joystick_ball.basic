@@ -8,7 +8,7 @@
 105 mx=39:my=24: rem bottom of the screen 
 405 rem 2. Recieve input from joystick
 407 j=peek(56320)
-408 if j=127 then goto 100: rem if no direction or button then loop
+408 if j=127 then goto 407: rem if no direction or button then loop
 410 if (j and 1)=0 then y=y-40: rem up
 411 rem down bit 1
 412 if (j and 2)=0 then y=y+40: rem down
