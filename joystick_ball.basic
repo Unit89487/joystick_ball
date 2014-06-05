@@ -18,7 +18,7 @@
 416 if (j and 8)=0 then x=x+1: rem right 
 417 rem poke s+(y)+oy,32:rem erase dot
 418 poke s+(x)+ox,b:rem draw dot 
-419 goto 100
+419 goto 407
 rem algorithm is: 1. put the dot on the screen
 rem 2.read the joystick 
 rem 3. based on direction, update x and y coordinate
