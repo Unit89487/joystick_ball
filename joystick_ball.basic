@@ -1,14 +1,17 @@
 0 rem !to "build/joystick_ball.prg"
 5 print "{clear}" 
-100 rem 1. place the ball in the starting position 
+100 rem initialization
 101 s = 1024
 102 b = 81
 103 x=0:y=0:ox=0:oy=0:rem starting coordinate
 104 dx=1:dy=1:rem how much i want to change y (delta y)
-105 mx=39:my=24: rem bottom of the screen 
+105 mx=39:my=24: rem bottom of the screen
+200 rem 1. place the ball in the starting position
+210 poke s+(40*y)+x,b
 405 rem 2. Recieve input from joystick
 407 j=peek(56320)
 408 if j=127 then goto 407: rem if no direction or button then loop
+409 ox=x:oy=y
 410 if (j and 1)=0 then y=y-40: rem up
 411 rem down bit 1
 412 if (j and 2)=0 then y=y+40: rem down
@@ -16,8 +19,8 @@
 414 if (j and 4)=0 then x=x-1: rem left 
 415 rem right bit 3
 416 if (j and 8)=0 then x=x+1: rem right 
-417 rem poke s+(y)+oy,32:rem erase dot
-418 poke s+(x)+ox,b:rem draw dot 
+417 poke s+(40*oy)+ox,32:rem erase dot
+418 poke s+(40*y)+x,b:rem draw dot 
 419 goto 407
 rem algorithm is: 1. put the dot on the screen
 rem 2.read the joystick 
